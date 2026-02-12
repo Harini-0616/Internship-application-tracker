@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Internship Application Tracker</title>
+<style> @import
+url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+body {
+font-family: 'Poppins', sans-serif;
+background: linear-gradient(135deg, #e4c3f7 0%, #c2a3e8 100%); color: #2c2c54;
+margin: 0;
+padding: 0;
+min-height: 100vh; animation: fadeIn 1s ease-in;
+}
+
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); }
+}
+h1 {
+text-align: center; margin: 25px 0 10px; color: #5e35b1;
+font-size: 42px;
+ 
+text-shadow: 2px 2px 8px rgba(0,0,0,0.1);
+}
+h3 {
+color: #6a1b9a; margin-top: 0;
+}
+.card {
+
+
+
+backdrop-filter: blur(8px);
+background: rgba(255, 255, 255, 0.8); border-radius: 20px;
+box-shadow: 0 8px 25px rgba(90, 50, 150, 0.1); padding: 25px 30px;
+margin: 25px auto; width: 90%;
+max-width: 900px;
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.card:hover {
+transform: translateY(-4px);
+box-shadow: 0 12px 35px rgba(90, 50, 150, 0.25);
+}
+table {
+width: 100%;
+border-collapse: collapse; border-radius: 12px; overflow: hidden; background: white;
+}
+th {
+background: linear-gradient(90deg, #a06cd5, #b388eb); color: white;
+text-align: left; padding: 12px; font-weight: 600;
+}
+td {
+padding: 10px;
+border-bottom: 1px solid #eee;
+}
+tr:nth-child(even) { background: #f8f5fc;
+}
+input[type="submit"], button {
+background: linear-gradient(135deg, #a06cd5, #9b5de5); color: white;
+border: none; padding: 12px 25px; border-radius: 30px;
+
+font-size: 15px; cursor: pointer;
+
+transition: all 0.3s ease;
+}
+input[type="submit"]:hover, button:hover {
+background: linear-gradient(135deg, #9b5de5, #a06cd5); transform: scale(1.05);
+}
+input[type="text"], input[type="email"], input[type="password"] { width: 70%;
+padding: 10px;
+border: 2px solid #cba7f5; border-radius: 8px; outline: none;
+transition: border 0.3s ease;
+}
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus { border-color: #9b5de5;
+}
+canvas { display: block;
+margin: 20px auto; border-radius: 16px; background: white;
+box-shadow: 0 8px 25px rgba(155, 93, 229, 0.2);
+ 
+}
+#outputBox {
+background: rgba(255,255,255,0.85); padding: 15px;
+border-radius: 12px; text-align: center; font-weight: 500;
+}
+footer {
+text-align: center;
+
+padding: 20px
+color: #4a148c; font-weight: 500;
+
+
+}
+footer span { color: #9b5de5;
+
+
+font-weight: 700;
+}
+#loginPage { display: flex;
+justify-content: center;
+align-items: center; height: 100vh;
+}
+.login-box {
+background: rgba(255, 255, 255, 0.9); border-radius: 20px;
+padding: 40px; text-align: center;
+box-shadow: 0 8px 25px rgba(155, 93, 229, 0.3); max-width: 400px;
+width: 90%;
+ 
+}
+.login-box h2 { color: #5e35b1;
+margin-bottom: 20px;
+}
+</style>
+</head>
+<body>
+<div id="loginPage">
+<div class="login-box">
+<h2>Login to Tracker</h2>
+<input type="text" id="username" placeholder="Username"><br><br>
+<input type="password" id="password" placeholder="Password"><br><br>
+<button onclick="login()">Login</button>
+<p style="color:#6a1b9a; font-size:14px; margin-top:10px;">Use any name & password</p>
+</div>
+</div>
+
+<div id="trackerPage" style="display:none;">
+<h1>Internship Application Tracker</h1>
+
+<div class="card">
+<p style="text-align:center; font-size:17px;">
+
+Explore amazing internship opportunities on
+
+<a href="https://internshala.com" target="_blank" style="color:#8e24aa; text-
+
+decoration:none; font-weight:600;">Internshala</a>.
+</p>
+
+<p style="text-align:center; font-style:italic;">“Dream big, work hard, stay focused.”</p>
+</div>
+<div class="card">
+<h3>Steps to Apply</h3>
+ 
+<ol>
+<li>Find your desired internship	</li>
+<li>Submit your application	</li>
+<li>Track your progress	</li>
+</ol>
+<h3>Popular Fields</h3>
+<ul id="fieldsList">
+<li>	Web Development</li>
+<li>	UI/UX Design</li>
+<li>	Data Science</li>
+<li>	Digital Marketing</li>
+</ul>
+</div>
+<div class="card">
+<h3>Applications Overview</h3>
+<table>
+<tr>
+<th>Company</th><th>Date</th><th>Status</th>
+</tr>
+
+<tr><td>Google</td><td>July 1</td><td>Pending ⏳ </td></tr>
+<tr><td>Infosys</td><td>July 10</td><td>Selected ✅</td></tr>
+<tr><td>TCS</td><td>July 15</td><td>Interview Scheduled	</td></tr>
+</table>
+</div>
+<div class="card">
+<h3>Apply for New Internship</h3>
+<form onsubmit="event.preventDefault(); alert('Application Submitted! ✅');">
+<label>Name:</label><br>
+<input type="text" id="name"><br><br>
+<label>Email:</label><br>
+<input type="email" id="email"><br><br>
+<input type="submit" value="Submit Application →">
+</form>
+</div>
+<div class="card">
+<h3>Performance Summary</h3>
+<p style="text-align:center; font-size:16px;">Your internship journey at a glance:</p>
+ 
+<div style="display:flex; justify-content:space-around; flex-wrap:wrap;">
+<div style="background:#ede7f6; border-radius:12px; padding:20px; width:200px; text- align:center; margin:10px;">
+<h4 style="color:#6a1b9a;">Total Applications</h4>
+<p style="font-size:22px; font-weight:bold; color:#4a148c;">12</p>
+</div>
+<div style="background:#ede7f6; border-radius:12px; padding:20px; width:200px; text- align:center; margin:10px;">
+<h4 style="color:#6a1b9a;">Response Rate</h4>
+<p style="font-size:22px; font-weight:bold; color:#4a148c;">75%</p>
+</div>
+<div style="background:#ede7f6; border-radius:12px; padding:20px; width:200px; text- align:center; margin:10px;">
+<h4 style="color:#6a1b9a;">Success Rate</h4>
+<p style="font-size:22px; font-weight:bold; color:#4a148c;">42%</p>
+</div>
+</div>
+</div>
+<div class="card">
+<h3>Statistics Dashboard</h3>
+<div id="outputBox"></div>
+<canvas id="myCanvas" width="500" height="300"></canvas>
+</div>
+
+<footer>Made with	by <span>Your Name</span></footer>
+</div>
+<script>
+function login() {
+const username = document.getElementById("username").value.trim(); const password = document.getElementById("password").value.trim();
+if (username && password) { document.getElementById("loginPage").style.display = "none"; document.getElementById("trackerPage").style.display = "block";
+} else {
+alert("Please enter both username and password!");
+}
+}
+ 
+let applied = 12, selected = 5, pending = 7;
+let percent = Math.round((selected / applied) * 100);
+
+document.getElementById("outputBox").innerHTML = `
+<strong>Applied:</strong> ${applied}<br>
+<strong>Selected:</strong> ${selected}<br>
+<strong>Pending:</strong> ${pending}<br>
+<strong>Success Rate:</strong> ${percent}%	`;
+
+let c = document.getElementById("myCanvas"); let ctx = c.getContext("2d");
+let grad = ctx.createLinearGradient(0, 0, 500, 300); grad.addColorStop(0, "#f3e5f5"); grad.addColorStop(1, "#ede7f6");
+ctx.fillStyle = grad; ctx.fillRect(0, 0, 500, 300);
+ctx.fillStyle = "#6a1b9a"; ctx.font = "bold 20px Poppins";
+ctx.fillText("Internship Progress", 150, 40);
+
+ctx.fillStyle = "#d1c4e9"; ctx.fillRect(100, 80, 300, 25); ctx.fillStyle = "#9c27b0"; ctx.fillRect(100, 80, percent * 3, 25);
+ctx.fillStyle = "#000";
+
+ctx.fillText(`${percent}% Completed`, 180, 100); let cx = 250, cy = 200, r = 60;
+ctx.beginPath();
+ctx.arc(cx, cy, r, 0, 2 * Math.PI);
+
+ctx.fillStyle = "#f3e5f5"; ctx.fill();
+ctx.beginPath(); ctx.moveTo(cx, cy);
+ctx.arc(cx, cy, r, -Math.PI / 2, (percent / 100) * 2 * Math.PI - Math.PI / 2);
+ 
+ctx.closePath(); ctx.fillStyle = "#ab47bc";
+ctx.fill(); ctx.beginPath();
+ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.strokeStyle = "#8e24aa"; ctx.lineWidth = 3;
+ctx.stroke();
+ctx.fillStyle = "#6a1b9a";
+ctx.font = "bold 18px Poppins"; ctx.fillText(`${percent}%`, cx - 20, cy + 5);
+</script>
+</body>
+</html>
